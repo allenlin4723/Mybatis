@@ -2,7 +2,7 @@
 # 基于Spring+MyBatis实现动态数据切换
 ## 业务背景
 
-目前拓加和思蓝运行着两套一样的系统，只是做了数据隔离。现在我们一般是业务功能在拓加系统开发好后，再拷贝代码到思蓝系统。所以为了减少维护成本，在现有的新系统上，针对销售系统，仓库系统，产品系统做动态数据切换，按照一定的系统标识，在特定的切面上，进行切换。
+目前公司A和公司B运行着两套一样的系统，只是做了物理上的数据隔离。现在我们一般是业务功能在公司A开发好后，再拷贝代码到公司B。所以为了减少维护成本，在现有的新系统上，针对销售系统，仓库系统，产品系统做动态数据切换，按照一定的系统标识，在特定的切面上，进行切换。
 
 ## 实现方案
 
@@ -314,15 +314,14 @@ jdbc:
         driverClassName: com.mysql.jdbc.Driver
         dbUserName: root
         password: 123456
-        url: jdbc:mysql://192.168.0.20:3306/amazon_sale?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://127.0.0.1:3306/amazon_sale?useUnicode=true&characterEncoding=utf8
       - sysUri: slcx
         driverClassName: com.mysql.jdbc.Driver
         dbUserName: root
         password: 123456
-        url: jdbc:mysql://192.168.0.17:3306/amazon_sale?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://127.0.0.2:3306/amazon_sale?useUnicode=true&characterEncoding=utf8
 ```
 如果后续需要在新增一个公司，那么直接在加一个对应数据库配置即可，这样可以很快的实现系统克隆功能。
 
 ### 执行流程图
 
-![未命名文件](https://note.youdao.com/yws/res/35697/FB6951DD3D814DE5B60CE1A2F0C86722)
